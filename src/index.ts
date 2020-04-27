@@ -1,6 +1,6 @@
 const SELL_TOKEN = "WETH";
 const SELL_TOKEN_DECIMALS = 18;
-const SELL_UNIT_AMOUNT = 0.25;
+const SELL_UNIT_AMOUNT = 0.5;
 const BUY_TOKEN = "USDC";
 const SLIPPAGE_PERCENT = 0.03;
 const API_URL = "https://api.0x.org";
@@ -27,7 +27,7 @@ const API_URL = "https://api.0x.org";
   if (quoteTypeEl.value === 'indicative') {
     apiRequestUrl = `${API_URL}/swap/v0/price?buyToken=${BUY_TOKEN}&sellToken=${SELL_TOKEN}&sellAmount=${sellAmount}&takerAddress=${takerAddress}&slippagePerecent=${SLIPPAGE_PERCENT}`;
   } else {
-    apiRequestUrl = `${API_URL}/swap/v0/quote?buyToken=${BUY_TOKEN}&sellToken=${SELL_TOKEN}&sellAmount=${sellAmount}&takerAddress=${takerAddress}&slippagePerecent=${SLIPPAGE_PERCENT}&skipValidation=true`;
+    apiRequestUrl = `${API_URL}/swap/v0/quote?buyToken=${BUY_TOKEN}&sellToken=${SELL_TOKEN}&sellAmount=${sellAmount}&takerAddress=${takerAddress}&slippagePerecent=${SLIPPAGE_PERCENT}&intentOnFilling=true&skipValidation=true`;
   }
 
 
