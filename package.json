@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "0x API RFQT Demo",
   "main": "index.html",
+  "author": "Steve Klebanoff (steve@0x.org)",
+  "license": "Apache-2.0",
   "scripts": {
     "start": "parcel index.html --open",
     "build": "parcel build index.html"

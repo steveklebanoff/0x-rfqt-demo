@@ -1,12 +1,43 @@
 <html>
-  <head>
-    <title>0x API RFQT demo</title>
-    <meta charset="UTF-8" />
-  </head>
 
-  <body>
-    <div id="app"></div>
+<head>
+  <title>0x API RFQT demo</title>
+  <meta charset="UTF-8" />
+  <script src="src/index.ts"></script>
+</head>
+<style>
+  label {
+    width: 100px;
+    display: inline-block;
+  }
 
-    <script src="src/index.ts"></script>
-  </body>
+  input[type="text"] {
+    margin-bottom: 15px;
+    width: 250px;
+    display: inline-block;
+  }
+</style>
+
+<body>
+  <div style="margin-bottom: 15px;">
+    <label>API Key:</label>
+    <input type="text" id="api-key" />
+    <br />
+    <label>Taker Address:</label>
+    <input type="text" id="taker-address" />
+    <br />
+    <label>Quote Type:</label>
+    <select id="quote-type">
+      <option value="indicative">indicative</option>
+      <option value="firm">firm</option>
+    </select>
+    <br /><br />
+    <button id="submit-request" onClick="window.submitApiRequest()">
+      Submit API Request
+    </button>
+  </div>
+
+  <pre id="results"></pre>
+</body>
+
 </html>
