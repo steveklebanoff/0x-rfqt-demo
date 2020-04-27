@@ -1,0 +1,15 @@
+{
+  "name": "0x-api-rfqt-demo",
+  "version": "1.0.0",
+  "description": "0x API RFQT Demo",
+  "main": "index.html",
+  "scripts": {
+    "start": "parcel index.html --open",
+    "build": "parcel build index.html"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "parcel-bundler": "^1.6.1",
+    "typescript": "^3.8.3"
+  }
+}
