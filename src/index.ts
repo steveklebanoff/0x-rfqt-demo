@@ -7,7 +7,7 @@ const API_URL = "https://api.0x.org";
 
 const getUrlForRequest = (quoteType: string, takerAddress: string) => {
   const sellAmount = SELL_UNIT_AMOUNT * (10 ** SELL_TOKEN_DECIMALS);
-  const baseParams = `buyToken=${BUY_TOKEN}&sellToken=${SELL_TOKEN}&sellAmount=${sellAmount}&takerAddress=${takerAddress}&slippagePercent=${SLIPPAGE_PERCENT}`;
+  const baseParams = `buyToken=${BUY_TOKEN}&sellToken=${SELL_TOKEN}&sellAmount=${sellAmount}&takerAddress=${takerAddress}&slippagePercentage=${SLIPPAGE_PERCENT}`;
   if (quoteType === 'indicative') {
     return `${API_URL}/swap/v0/price?${baseParams}`;
   } else if (quoteType === 'firm') {
