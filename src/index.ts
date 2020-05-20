@@ -1,7 +1,7 @@
-const SELL_TOKEN = "WETH";
+const SELL_TOKEN = "ETH";
 const SELL_TOKEN_DECIMALS = 18;
-const SELL_UNIT_AMOUNT = 0.5;
-const BUY_TOKEN = "USDC";
+const SELL_UNIT_AMOUNT = 0.25;
+const BUY_TOKEN = "DAI";
 const SLIPPAGE_PERCENT = 0.03;
 const API_URL = "https://api.0x.org";
 
@@ -23,6 +23,8 @@ const getUrlForRequest = (quoteType: string, takerAddress: string) => {
   const takerAddressEl = document.getElementById('taker-address') as HTMLInputElement;
   const quoteTypeEl = document.getElementById('quote-type') as HTMLInputElement;
   const resultsEl = document.getElementById("results")!;
+  const fillEl = document.getElementById("fill")!;
+  fillEl.style.display = 'none';
 
   const apiKey = apiKeyEl.value;
   const takerAddress = takerAddressEl.value;
@@ -38,9 +40,20 @@ const getUrlForRequest = (quoteType: string, takerAddress: string) => {
   const zeroExApiResponse = await window.fetch(apiRequestUrl, { headers: { "0x-api-key": apiKey } });
   if (zeroExApiResponse.status === 200) {
     resultsEl.innerText = JSON.stringify(await zeroExApiResponse.json(), null, 2);
+    if (quoteTypeEl.value === 'firm') {
+      fillEl.style.display = 'block';
+    }
   } else {
     resultsEl.innerText = `Error: ${zeroExApiResponse.status} ${zeroExApiResponse.body}`;
   }
 
   submitEl.disabled = false;
 };
+
+(window as any).fill = async () => {
+  const fillEl = document.getElementById("fill")!;
+  fillEl.style.display = 'none';
+  const resp = JSON.parse(document.getElementById("results")!.innerText);
+  await (window as any).ethereum.enable();
+  (window as any).web3.eth.sendTransaction(resp, console.log);
+}
